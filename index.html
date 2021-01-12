@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces&display=swap" rel="stylesheet">
+    <script defer src="main.js"></script>
+    
+</head>
+<body>
+    <div class="wrap">
+        <div class="form">
+            <button id="reg__btn">Registration</button>
+            <button id="login__btn" >Login</button>
+        </div>
+
+        <div id="reg__form" class="reg__background">
+            <div class="reg__body">
+                <span class="reg__close">&times;</span>
+                <label for="registration-login">Enter your login</label>
+                <input type="login" id="registration-login" value=""> 
+                Enter your password<input type="password" id="registration-password" value="">
+                Enter your name<input type="name" id="registration-name" value="">
+                Confirm your age<input type="age" id="registration-age" value="">
+                <button id="reg__submit" class="submit">Submit</button>
+            </div>
+        </div>
+
+        <div id="login__form" class="login__background">
+            <div class="login__body">
+                <span class="login__close">&times;</span>
+                <label for="login">Enter your login</label>
+                <input type="email" id="login">
+                Enter your password<input type="password" id="login-password">
+                <button id="login__submit" class="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
