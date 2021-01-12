@@ -17,6 +17,7 @@ let loginClose = document.querySelector('.login__close');
 let loginLogin = document.getElementById('login');
 let loginPassword = document.getElementById('login-password');
 let loginSubmit = document.getElementById('login__submit');
+let loginImg = document.querySelector('.success__body');
 
 // ===========================================================
 
@@ -27,7 +28,7 @@ loginClose.addEventListener ("click", loginNone);
 regSubmit.addEventListener ("click", regDisplay);
 loginSubmit.addEventListener ("click", logDisplay);
 
-// ===========================================================
+// ============================================================
 
 function regBlock () {
     regForm.style.display = "block";
@@ -57,15 +58,21 @@ window.onclick = function (event) {
 // Вывод данных пользователя в массив
 let regUsers = [];
 
+
+
 function regDisplay () {
     let regUser = new User (regLogin.value, regPassword.value, regName.value, regAge.value);
     regUsers.push(regUser);
     console.log(regUsers);
-    alert('Вы успешно зарегистрировались!')
-    if (!regLogin.value || !regPassword.value || !regName.value || !regAge.value)
-    alert('Заполните все поля');
-}
 
+    if (!regLogin.value || !regPassword.value || !regName.value || !regAge.value) {
+        alert('Заполните все поля');  
+    } else {
+        alert('Поздравляю, вы успешно зарегистрированы!');
+        regForm.style.display = 'none';
+        loginForm.style.display = 'block';
+    }
+}
 // Конструктор
 
 function User (login, password, name, age) {
@@ -80,7 +87,14 @@ let logUsers = [];
 function logDisplay () {
     let logUser = new User (loginLogin.value, loginPassword.value);
     if (loginLogin.value === regLogin.value && loginPassword.value === regPassword.value) {
-        alert(`Поздравляю, вы успешно авторизированы. Ваш логин: ${regLogin.value}, ваш пароль: ${regPassword.value}, ваше имя: ${regName.value}, ваш возраст: ${regAge.value}`);
+        logUsers.push(logUser);
+        alert(`Добро пожаловать в ваш личный кабинет' 
+            Ваш логин: ${regLogin.value},
+            Ваш пароль: ${regPassword.value},
+            Ваше имя: ${regName.value},
+            Ваш возраст: ${regAge.value}`);
+            loginImg.style.display = 'block';
+            
     } else {
         alert('Вы ввели неправильные данные');
     }
