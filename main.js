@@ -66,9 +66,25 @@ function regDisplay () {
     console.log(regUsers);
 
     if (!regLogin.value || !regPassword.value || !regName.value || !regAge.value) {
-        alert('Заполните все поля');  
+        let registrationError = document.createElement('div');
+        registrationError.classList.add('form__error');
+        wrapper.appendChild(registrationError);
+        setTimeout(() => registrationError.remove(), 1500);
+
+        let errorText = document.createElement('p');
+        errorText.textContent = 'Вы ввели не все данные!';
+        errorText.classList.add('error__text');
+        registrationError.appendChild(errorText);
     } else {
-        alert('Поздравляю, вы успешно зарегистрированы!');
+        let registrationSuccess = document.createElement('div');
+        registrationSuccess.classList.add('form__success');
+        wrapper.appendChild(registrationSuccess);
+        setTimeout(() => registrationSuccess.remove(), 2000);
+
+        let successText = document.createElement('p');
+        successText.textContent = 'Поздравляем! Вы успешно зарегистрированы';
+        successText.classList.add('success__text');
+        registrationSuccess.appendChild(successText);
         regForm.style.display = 'none';
         loginForm.style.display = 'block';
     }
@@ -88,14 +104,47 @@ function logDisplay () {
     let logUser = new User (loginLogin.value, loginPassword.value);
     if (loginLogin.value === regLogin.value && loginPassword.value === regPassword.value) {
         logUsers.push(logUser);
-        alert(`Добро пожаловать в ваш личный кабинет' 
-            Ваш логин: ${regLogin.value},
-            Ваш пароль: ${regPassword.value},
-            Ваше имя: ${regName.value},
-            Ваш возраст: ${regAge.value}`);
-            loginImg.style.display = 'block';
-            
+        let successLogin = document.createElement('div');
+        successLogin.classList.add('form-login__success');
+        wrapper.appendChild(successLogin);
+        setTimeout(() => successLogin.remove(), 3000);
+
+        let loginText = document.createElement('p');
+        let loginText2 = loginText.cloneNode(true);
+        let loginText3 = loginText.cloneNode(true);
+        let loginText4 = loginText.cloneNode(true);
+        let loginText5 = loginText.cloneNode(true);
+
+        loginText.textContent = 'Поздравляем! Вы успешно вошли';
+        loginText.classList.add('login-success__text');
+        successLogin.appendChild(loginText);
+
+        loginText2.innerHTML = `Ваш логин: ${regLogin.value}`
+        loginText.after(loginText2);
+        successLogin.appendChild(loginText2);
+
+        loginText3.innerHTML = `Ваш пароль: ${regPassword.value}`
+        loginText.after(loginText3);
+        successLogin.appendChild(loginText3);
+
+        loginText4.innerHTML = `Ваше имя: ${regName.value}`
+        loginText.after(loginText4);
+        successLogin.appendChild(loginText4);
+
+        loginText5.innerHTML = `Ваш возраст: ${regAge.value}`
+        loginText.after(loginText5);
+        successLogin.appendChild(loginText5);
+
+        loginImg.style.display = 'block';
     } else {
-        alert('Вы ввели неправильные данные');
+        let failedLogin = document.createElement('div');
+        failedLogin.classList.add('form-login__error');
+        wrapper.appendChild(failedLogin);
+        setTimeout(() => failedLogin.remove(), 2000);
+
+        let failedLoginText = document.createElement('p');
+        failedLoginText.textContent = 'Вы ввели неправильные данные, попробуйте снова.';
+        failedLoginText.classList.add('login-error__text');
+        failedLogin.appendChild(failedLoginText);
     }
 }
